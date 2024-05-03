@@ -35,3 +35,16 @@ import Launches from '../components/Launches.astro';
 
 	<Launches />
 </Layout>
+<style>
+	.link-card-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+		gap: 5rem;
+	}
+
+	@media (min-width: 640px) {
+		.link-card-grid {
+			grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+		}
+	}
+</style>

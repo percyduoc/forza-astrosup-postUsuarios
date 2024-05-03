@@ -25,7 +25,12 @@ import CardLaunch from './CardLaunch.astro';
 <div class="grid gap-8 sm:grid-gols-2 lg:grid-cols-3">
     {
         launches.map((launch)=>
-        <CardLaunch id={launch.id} img={launch.links.patch.small} details={launch.details} flightNumber={launch.flight_number} success={launch.success} />
+        <CardLaunch 
+        id={launch.id} 
+        img={launch.links.patch.small} 
+        details={launch.details} 
+        flightNumber={launch.flight_number} 
+        success={launch.success} />
         )
     }
 </div>

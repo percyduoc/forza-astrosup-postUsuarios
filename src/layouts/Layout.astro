@@ -17,7 +17,7 @@ const { title } = Astro.props;
 		<title>{title}</title>
 	</head>
 	
-	<body class="bg-gray-900 min-h-screen pb-32">
+	<body class="bg-neutral-300 min-h-screen pb-32">
 		<Header />
 		<main class="max-w-5xl px-4 m-auto">
 			<slot />
@@ -41,6 +41,8 @@ const { title } = Astro.props;
 		background: #13151a;
 		background-size: 224px;
 		color-scheme: dark light;
+		color: #191414;
+		
 	}
 	code {
 		font-family:
@@ -53,4 +55,5 @@ const { title } = Astro.props;
 			Courier New,
 			monospace;
 	}
+
 </style>
