@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const { cookies, redirect } = Astro;
+
+const accessToken = cookies.get("sb-access-token");
+const refreshToken = cookies.get("sb-refresh-token");
+
+if (accessToken && refreshToken) {
+    return redirect("/dashboard");
+}
+
+
+---
+
+<Layout title="Ingresar">
+    <h1>Ingresar</h1>
+    <p>¿Nuevo por aquí? <a href="/register">Crea una cuenta</a></p>
+    <form action="/api/auth/signin" method="post" enctype="multipart/form-data">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" />
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" />
+        <button type="submit">Ingresar</button>
+    </form>
+
+    <!-- <script>
+    fetch('/api/auth/signin', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: 'example@example.com',
+          password: 'password'
+        })
+      });
+      </script> -->
+</Layout>

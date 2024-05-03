@@ -1,0 +1,31 @@
+---
+import { type ForzApi } from '../pages/types/forzapi';
+import CardProduct from './CardProduct.astro';
+    const res = await fetch('https://api.spacexdata.com/v5/launches/query', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            query: {},
+            options: {
+                sort:{
+                    date_unix: 'asc'
+                },
+                limit: 12
+            }
+        })
+    })
+
+    const { usuarios: user } = (await res.json()) as ForzApi;
+
+
+---
+
+<div class="grid gap-8 sm:grid-gols-2 lg:grid-cols-3">
+    {
+        user.map((usuarios)=>
+        <CardProduct id={usuarios.id}  />
+        )
+    }
+</div>

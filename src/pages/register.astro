@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { supabase } from '../lib/supabase';
+import { map } from 'nanostores';
+import type { APIRoute } from "astro";
+// import { APIRoute } from 'astro';
+
+
+
+/// Leer en consola todos los datos
+// let { data: user, error } = await supabase
+//   .from('user')
+//   .select('*')
+// console.log(user, error);
+
+/// Insertar datos
+const { data, error } = await supabase
+    .from('user')
+    .insert([
+        { nombre: String },
+        { email: String },
+        { password: String },
+        { fecNacimiento: Date },
+        { direccion: String },
+        { ciudad: String }
+    ])
+  .select()
+const { data: insertData, error: insertError, } = await supabase
+  .from('user')
+  .insert([
+    { nombre: String, email: String, password: String, fecNacimiento: new Date(), direccion: String, ciudad: String }
+  ])
+  .select();
+
+
+
+---
+
+    <Layout title='Registrar'>
+        <main>
+            <h1>Registrar</h1>
+            <form action="/api/auth/register" method="post">
+                <label for="nombre" >Nombre</label>
+                <input type="text" name="name" id="nombre" required>
+                <label for="email">Correo Eléctronico</label>
+                <input type="email" name="email" id="email" required>
+                <label for="password">Contraseña</label>
+                <input type="password" name="password" id="password" required>
+                <label for="fecNacimiento">Fecha de Nacimiento</label>
+                <input type="date" name="fecNacimiento" id="fecNacimiento" required>
+                <label for="ciudad">Ciudad</label>
+                <input type="text" name="ciudad" id="ciudad" required>
+                <label for="direccion">Dirección (hogar)</label>
+                <input type="text" name="direccion" id="direccion" required>
+                <button type="submit" id="button">Registrar</button>
+            </form>
+            
+        
+        </main>
+
+        <!-- <script>
+          function registroClick(){
+            console.log('boton pulsado');
+          }
+          document.getElementById('button').addEventListener('click', registroClick);
+        </script> -->
+
+    </Layout> 
+
+
+
+<style>
+
+</style>
+
